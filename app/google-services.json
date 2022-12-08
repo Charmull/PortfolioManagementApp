@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "797523836406",
+    "project_id": "portfoliomanagementapp-84175",
+    "storage_bucket": "portfoliomanagementapp-84175.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797523836406:android:edd7f6e2bda22da6169bd7",
+        "android_client_info": {
+          "package_name": "com.example.portfoliomanagementapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797523836406-dk0bt263qr81mdrh2fppuvnmq8vjl0e6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5ombEFm2GSjv2ePe4QYUTW8zmb-2NmLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797523836406-dk0bt263qr81mdrh2fppuvnmq8vjl0e6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
