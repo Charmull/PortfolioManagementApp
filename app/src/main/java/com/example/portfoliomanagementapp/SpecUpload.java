@@ -158,6 +158,7 @@ public class SpecUpload extends AppCompatActivity {
                 specDTO.desc = desc;
                 specDTO.category = categoryInput;
                 dbRef.child("spec").push().setValue(specDTO);
+                finish();
         }
     }
 
