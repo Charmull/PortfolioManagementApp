@@ -37,6 +37,9 @@ public class CertificateList extends AppCompatActivity {
     // back button
     private Button backBtn;
 
+    // intent
+    String category;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -44,7 +47,11 @@ public class CertificateList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certificate_list);
 
+        Intent intent = getIntent();
+        category = intent.getStringExtra("category");
+
         listView = (LinearLayout) findViewById(R.id.listView);
+        listView.removeAllViews();
         backBtn = (Button) findViewById(R.id.backBtn);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -58,9 +65,10 @@ public class CertificateList extends AppCompatActivity {
     }
 
     private void createList() {
-        dbRef.child("certificate").addValueEventListener(new ValueEventListener() {
+        dbRef.child(category).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listView.removeAllViews();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     SpecDTO specDTO = ds.getValue(SpecDTO.class);
                     createSpec(specDTO);

@@ -41,6 +41,10 @@ public class SpecDetail extends AppCompatActivity {
     private TextView specTitle;
     private TextView specDesc;
 
+    // intent id, category
+    private Double id;
+    private String specDTOCategory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +53,9 @@ public class SpecDetail extends AppCompatActivity {
         Intent intent = getIntent();
         // spec id
         String specDTOId = intent.getStringExtra("specDTO_Id");
-        Double id = Double.parseDouble(specDTOId);
+        id = Double.parseDouble(specDTOId);
         // spec category
-        String specDTOCategory = intent.getStringExtra("specDTO_category");
+        specDTOCategory = intent.getStringExtra("specDTO_category");
 
         // 스펙 이미지 세팅
         specImg = (ImageView) findViewById(R.id.specImg);
@@ -131,6 +135,176 @@ public class SpecDetail extends AppCompatActivity {
                 // getting failed
             }
         });
+    }
+
+    public void delSpecBtnHandler(View view) {
+        // firebase storage
+        StorageReference storageRef = storage.getInstance().getReference();
+        StorageReference riversRef = storageRef.child("spec/"+id+"/img.png");
+        if (riversRef == null) {
+//            Toast.makeText(SpecDetail.this, "해당 스펙에 대한 이미지가 사라졌습니다.", Toast.LENGTH_LONG).show();
+        }
+        else {
+            StorageReference submitImg = storageRef.child("spec/"+id+"/img.png");
+            submitImg.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                }
+            });
+        }
+
+        // firebase db
+        dbRef.child(specDTOCategory).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    SpecDTO specDTO = ds.getValue(SpecDTO.class);
+
+                    if (Objects.equals(specDTO.id, id)) {
+                        dbRef.child(specDTOCategory).child(ds.getKey()).removeValue();
+                    }
+            }
+        }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // getting failed
+            }
+        });
+
+        final boolean[] flag = {false};
+
+        // category따라 경로
+        switch (specDTOCategory) {
+            case "certificate":
+                dbRef.child("certificate_prev").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                            int num = (int) snapshot.getValue(Integer.class);
+                            num = num - 1;
+                            dbRef.child(specDTOCategory + "_prev").setValue(num);
+                            flag[0] = true;
+                        }
+                        else if (flag[0] == false) {
+                            dbRef.child(specDTOCategory + "_prev").setValue(0);
+                            flag[0] = true;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // getting failed
+                    }
+                });
+                break;
+            case "degree":
+                dbRef.child(specDTOCategory).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            SpecDTO specDTO = ds.getValue(SpecDTO.class);
+                            Toast.makeText(SpecDetail.this, "수정정", Toast.LENGTH_LONG).show();
+
+                            dbRef.child("degree_prev").setValue(specDTO.title);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // getting failed
+                    }
+                });
+                break;
+            case "volunteer":
+                dbRef.child(specDTOCategory).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int num = 0;
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            SpecDTO specDTO = ds.getValue(SpecDTO.class);
+
+                            num = num + Integer.parseInt(specDTO.desc);
+                            dbRef.child("volunteer_prev").setValue(num);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // getting failed
+                    }
+                });
+                break;
+            case "grade":
+                dbRef.child(specDTOCategory).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Double num = 0.0;
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            SpecDTO specDTO = ds.getValue(SpecDTO.class);
+
+                            num = Double.parseDouble(specDTO.desc);
+                            dbRef.child("grade_prev").setValue(num);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // getting failed
+                    }
+                });
+                break;
+            case "award":
+                dbRef.child("award_prev").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                            int num = (int) snapshot.getValue(Integer.class);
+                            num = num - 1;
+                            dbRef.child(specDTOCategory + "_prev").setValue(num);
+                            flag[0] = true;
+                        }
+                        else if (flag[0] == false) {
+                            dbRef.child(specDTOCategory + "_prev").setValue(0);
+                            flag[0] = true;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // getting failed
+                    }
+                });
+                break;
+            case "etc":
+                dbRef.child("etc_prev").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                            int num = (int) snapshot.getValue(Integer.class);
+                            num = num - 1;
+                            dbRef.child(specDTOCategory + "_prev").setValue(num);
+                            flag[0] = true;
+                        }
+                        else if (flag[0] == false) {
+                            dbRef.child(specDTOCategory + "_prev").setValue(0);
+                            flag[0] = true;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // getting failed
+                    }
+                });
+                break;
+        }
+
+        finish();
     }
 
     public void backBtnHandler(View view) {

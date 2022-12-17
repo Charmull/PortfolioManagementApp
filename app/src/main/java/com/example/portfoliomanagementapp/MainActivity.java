@@ -40,18 +40,23 @@ public class MainActivity extends AppCompatActivity {
 
     // degree
     private TextView degreeInfo;
+    private ImageView degreeImg;
 
     // volunteer
     private TextView volunteerInfo;
+    private ImageView volunteerImg;
 
     // grade
     private TextView gradeInfo;
+    private ImageView gradeImg;
 
     // award
     private TextView awardInfo;
+    private ImageView awardImg;
 
     // etc
     private TextView etcInfo;
+    private ImageView etcImg;
 
 
     @Override
@@ -66,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
         awardInfo = (TextView) findViewById(R.id.award_info);
         etcInfo = (TextView) findViewById(R.id.etc_info);
         certificateImg = (ImageView) findViewById(R.id.certificate);
+        degreeImg = (ImageView) findViewById(R.id.degree);
+        volunteerImg = (ImageView) findViewById(R.id.volunteer);
+        gradeImg = (ImageView) findViewById(R.id.grade);
+        awardImg = (ImageView) findViewById(R.id.award);
+        etcImg = (ImageView) findViewById(R.id.etc);
 
         // certificateInfo setting
         dbRef.child("certificate_prev").addValueEventListener(new ValueEventListener() {
@@ -188,6 +198,57 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                intent.putExtra("category", "certificate");
+                startActivity(intent);
+            }
+        });
+
+        // degreeImg onClick
+        degreeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                intent.putExtra("category", "degree");
+                startActivity(intent);
+            }
+        });
+
+        // volunteerImg onClick
+        volunteerImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                intent.putExtra("category", "volunteer");
+                startActivity(intent);
+            }
+        });
+
+        // gradeImg onClick
+        gradeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                intent.putExtra("category", "grade");
+                startActivity(intent);
+            }
+        });
+
+        // awardImg onClick
+        awardImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                intent.putExtra("category", "award");
+                startActivity(intent);
+            }
+        });
+
+        // etcImg onClick
+        etcImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                intent.putExtra("category", "etc");
                 startActivity(intent);
             }
         });
