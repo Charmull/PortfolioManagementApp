@@ -3,6 +3,7 @@ package com.example.portfoliomanagementapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,6 +46,8 @@ public class SpecDetail extends AppCompatActivity {
     private Double id;
     private String specDTOCategory;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,11 +63,12 @@ public class SpecDetail extends AppCompatActivity {
         // 스펙 이미지 세팅
         specImg = (ImageView) findViewById(R.id.specImg);
 
+
         // firebase storage
         StorageReference storageRef = storage.getInstance().getReference();
         StorageReference riversRef = storageRef.child("spec/"+id+"/img.png");
         if (riversRef == null) {
-            Toast.makeText(SpecDetail.this, "해당 스펙에 대한 이미지가 사라졌습니다.", Toast.LENGTH_LONG).show();
+            Toast.makeText(SpecDetail.this, "해당 스펙은 비인증 스펙으로 사진파일이 없습니다.", Toast.LENGTH_LONG).show();
         }
         else {
             StorageReference submitImg = storageRef.child("spec/"+id+"/img.png");
@@ -135,6 +139,13 @@ public class SpecDetail extends AppCompatActivity {
                 // getting failed
             }
         });
+    }
+
+    public void updateSpecBtnHandler(View view) {
+        Intent intent = new Intent(getApplicationContext(), SpecUpdate.class);
+        intent.putExtra("specDTO_Id", String.valueOf(id));
+        intent.putExtra("specDTO_category", specDTOCategory);
+        startActivity(intent);
     }
 
     public void delSpecBtnHandler(View view) {

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -23,9 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-public class CertificateList extends AppCompatActivity {
+public class SpecList extends AppCompatActivity {
 
     // firebase db
     private FirebaseDatabase database;
@@ -40,12 +37,14 @@ public class CertificateList extends AppCompatActivity {
     // intent
     String category;
 
+    private TextView title;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_certificate_list);
+        setContentView(R.layout.activity_spec_list);
 
         Intent intent = getIntent();
         category = intent.getStringExtra("category");
@@ -60,6 +59,29 @@ public class CertificateList extends AppCompatActivity {
                 finish();
             }
         });
+
+        title = (TextView) findViewById(R.id.title);
+
+        switch (category) {
+            case "certificate":
+                title.setText("자격증 스펙 리스트");
+                break;
+            case "degree":
+                title.setText("학위 스펙 리스트");
+                break;
+            case "volunteer":
+                title.setText("봉사활동 스펙 리스트");
+                break;
+            case "grade":
+                title.setText("학점 스펙 리스트");
+                break;
+            case "award":
+                title.setText("입상 스펙 리스트");
+                break;
+            case "etc":
+                title.setText("대외활동 스펙 리스트");
+                break;
+        }
 
         createList();
     }

@@ -4,29 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
-import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -141,10 +128,10 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.getValue(Double.class) != null) {
                     Double value = (Double) snapshot.getValue(Double.class);
-                    gradeInfo.setText(String.valueOf(value) + "/4.5");
+                    gradeInfo.setText("직전학기 " + String.valueOf(value) + "/4.5");
                 }
                 else {
-                    gradeInfo.setText("0.0/4.5");
+                    gradeInfo.setText("직전학기 0.0/4.5");
                 }
             }
 
@@ -197,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
         certificateImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                Intent intent = new Intent(getApplicationContext(), SpecList.class);
                 intent.putExtra("category", "certificate");
                 startActivity(intent);
             }
@@ -207,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         degreeImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                Intent intent = new Intent(getApplicationContext(), SpecList.class);
                 intent.putExtra("category", "degree");
                 startActivity(intent);
             }
@@ -217,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
         volunteerImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                Intent intent = new Intent(getApplicationContext(), SpecList.class);
                 intent.putExtra("category", "volunteer");
                 startActivity(intent);
             }
@@ -227,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
         gradeImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                Intent intent = new Intent(getApplicationContext(), SpecList.class);
                 intent.putExtra("category", "grade");
                 startActivity(intent);
             }
@@ -237,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
         awardImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                Intent intent = new Intent(getApplicationContext(), SpecList.class);
                 intent.putExtra("category", "award");
                 startActivity(intent);
             }
@@ -247,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
         etcImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                Intent intent = new Intent(getApplicationContext(), SpecList.class);
                 intent.putExtra("category", "etc");
                 startActivity(intent);
             }
