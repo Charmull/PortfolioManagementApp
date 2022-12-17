@@ -183,14 +183,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        // certificateImg onClick
-//        certificateImg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
-//                startActivity(intent);
-//            }
-//        });
+        // certificateImg onClick
+        certificateImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CertificateList.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void addSpecHandler(View v) {

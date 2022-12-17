@@ -17,6 +17,13 @@
         android:theme="@style/Theme.PortfolioManagementApp"
         tools:targetApi="31">
         <activity
+            android:name=".CertificateList"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SpecDetail"
             android:exported="false">
             <meta-data
