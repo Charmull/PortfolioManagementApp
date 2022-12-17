@@ -213,8 +213,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="addSpecHandler"
+            android:layout_marginRight="10dp"
             android:text="스펙 추가"/>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/briefProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="briefProfileHandler"
+            android:text="약력사항"/>
+
+   </LinearLayout>
 
 </LinearLayout>

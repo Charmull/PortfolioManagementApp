@@ -50,6 +50,7 @@
                     android:id="@+id/category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="카테고리 선택 : " />
 
                 <RadioGroup
@@ -115,6 +116,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="스펙 이름 : " />
                 <EditText
                     android:id="@+id/specTitle"
@@ -134,11 +136,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="스펙 설명 : " />
                 <EditText
                     android:id="@+id/specDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
                     android:gravity="center_horizontal"
                     android:hint="스펙에 대한 설명을 입력해주세요."
                     android:background="@drawable/memo_border"/>
