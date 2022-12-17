@@ -43,6 +43,8 @@ public class SpecUpdate extends AppCompatActivity {
     ImageView specImg;
     Uri imgFile;
 
+    private Button addSpecImg;
+
     // firebase db
     private FirebaseDatabase database;
     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();

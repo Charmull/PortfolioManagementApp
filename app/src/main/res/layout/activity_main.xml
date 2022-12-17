@@ -4,13 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-
-    <TextView
-        android:id="@+id/mySpecTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="30dp"
-        android:text="나의 스펙 한눈에 보기" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10px">
+
+        <TextView
+            android:id="@+id/mySpecTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:text="나의 스펙 한눈에 보기" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,41 +33,46 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/certificate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/certi" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="자격증" />
             <TextView
                 android:id="@+id/certificate_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="0개 보유" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/degree"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/degree" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="학위" />
             <TextView
                 android:id="@+id/degree_info"
@@ -63,23 +80,26 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="4년제 대학" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/volunteer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/volun" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="봉사" />
             <TextView
                 android:id="@+id/volunteer_info"
@@ -87,6 +107,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="0시간" />
         </LinearLayout>
     </LinearLayout>
@@ -100,17 +121,19 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/grade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/degree" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="학점" />
             <TextView
                 android:id="@+id/grade_info"
@@ -118,23 +141,26 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="0.0/4.5" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/award"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/grade" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="입상" />
             <TextView
                 android:id="@+id/award_info"
@@ -142,23 +168,26 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="0" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/etc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/etc" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="대외 활동" />
             <TextView
                 android:id="@+id/etc_info"
@@ -166,15 +195,26 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="0회 참여" />
         </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/addSpec"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="addSpecHandler"
-        android:text="스펙 추가"/>
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10px">
+
+        <Button
+            android:id="@+id/addSpec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addSpecHandler"
+            android:text="스펙 추가"/>
+
+    </LinearLayout>
 
 </LinearLayout>

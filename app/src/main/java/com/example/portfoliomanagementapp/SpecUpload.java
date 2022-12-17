@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -45,6 +46,8 @@ public class SpecUpload extends AppCompatActivity {
     ImageView specImg;
     private FirebaseStorage storage;
     Uri imgFile;
+
+    private Button addSpecImg;
 
     // 카테고리 관련
     RadioGroup radioGroup;
