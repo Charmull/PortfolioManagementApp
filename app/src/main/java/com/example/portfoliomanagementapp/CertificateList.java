@@ -104,6 +104,7 @@ public class CertificateList extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SpecDetail.class);
                 intent.putExtra("specDTO_Id", String.valueOf(specDTO.id));
+                intent.putExtra("specDTO_category", specDTO.category);
                 startActivity(intent);
             }
         });
