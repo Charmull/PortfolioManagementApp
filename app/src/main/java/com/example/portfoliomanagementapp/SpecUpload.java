@@ -151,13 +151,166 @@ public class SpecUpload extends AppCompatActivity {
                 StorageReference riversRef = storageRef.child("spec/"+id+"/img.png");
                 UploadTask uploadTask = riversRef.putFile(imgFile);
 
-                // firebase database
+
+                // firebase Realtime Database에 정보 저장하기
                 SpecDTO specDTO = new SpecDTO();
                 specDTO.id = id;
                 specDTO.title = title;
                 specDTO.desc = desc;
                 specDTO.category = categoryInput;
-                dbRef.child("spec").push().setValue(specDTO);
+
+                final boolean[] flag = {false};
+                // category따라 경로
+                switch (categoryInput) {
+                    case "certificate":
+                        dbRef.child("certificate").push().setValue(specDTO);
+                        Toast.makeText(SpecUpload.this, "specDTO 넣음!", Toast.LENGTH_LONG).show();
+
+                        dbRef.child("certificate_prev").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                                    int num = (int) snapshot.getValue(Integer.class);
+                                    num = num + 1;
+                                    dbRef.child("certificate_prev").setValue(num);
+                                    flag[0] = true;
+                                    Toast.makeText(SpecUpload.this, "num 읽어와서 넣음!", Toast.LENGTH_LONG).show();
+                                }
+                                else if (flag[0] == false) {
+                                    dbRef.child("certificate_prev").setValue(1);
+                                    flag[0] = true;
+                                    Toast.makeText(SpecUpload.this, "넣음!", Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // getting failed
+                            }
+                        });
+                        break;
+                    case "degree":
+                        dbRef.child("degree").push().setValue(specDTO);
+
+                        dbRef.child("degree_prev").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                                    int num = (int) snapshot.getValue(Integer.class);
+                                    num = num + 1;
+                                    dbRef.child("degree_prev").setValue(num);
+                                    flag[0] = true;
+                                }
+                                else if (flag[0] == false) {
+                                    dbRef.child("degree_prev").setValue(1);
+                                    flag[0] = true;
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // getting failed
+                            }
+                        });
+                        break;
+                    case "volunteer":
+                        dbRef.child("volunteer").push().setValue(specDTO);
+
+                        dbRef.child("volunteer_prev").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                                    int num = (int) snapshot.getValue(Integer.class);
+                                    num = num + 1;
+                                    dbRef.child("volunteer_prev").setValue(num);
+                                    flag[0] = true;
+                                }
+                                else if (flag[0] == false) {
+                                    dbRef.child("volunteer_prev").setValue(1);
+                                    flag[0] = true;
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // getting failed
+                            }
+                        });
+                        break;
+                    case "grade":
+                        dbRef.child("grade").push().setValue(specDTO);
+
+                        dbRef.child("grade_prev").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                                    int num = (int) snapshot.getValue(Integer.class);
+                                    num = num + 1;
+                                    dbRef.child("grade_prev").setValue(num);
+                                    flag[0] = true;
+                                }
+                                else if (flag[0] == false) {
+                                    dbRef.child("grade_prev").setValue(1);
+                                    flag[0] = true;
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // getting failed
+                            }
+                        });
+                        break;
+                    case "award":
+                        dbRef.child("award").push().setValue(specDTO);
+
+                        dbRef.child("award_prev").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                                    int num = (int) snapshot.getValue(Integer.class);
+                                    num = num + 1;
+                                    dbRef.child("award_prev").setValue(num);
+                                    flag[0] = true;
+                                }
+                                else if (flag[0] == false) {
+                                    dbRef.child("award_prev").setValue(1);
+                                    flag[0] = true;
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // getting failed
+                            }
+                        });
+                        break;
+                    case "etc":
+                        dbRef.child("etc").push().setValue(specDTO);
+
+                        dbRef.child("etc_prev").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
+                                    int num = (int) snapshot.getValue(Integer.class);
+                                    num = num + 1;
+                                    dbRef.child("etc_prev").setValue(num);
+                                    flag[0] = true;
+                                }
+                                else if (flag[0] == false) {
+                                    dbRef.child("etc_prev").setValue(1);
+                                    flag[0] = true;
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // getting failed
+                            }
+                        });
+                        break;
+                }
+//                dbRef.child("spec").push().setValue(specDTO);
                 finish();
         }
     }
