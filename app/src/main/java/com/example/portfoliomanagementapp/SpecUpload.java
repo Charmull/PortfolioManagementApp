@@ -195,14 +195,14 @@ public class SpecUpload extends AppCompatActivity {
                         dbRef.child("degree_prev").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
-                                    int num = (int) snapshot.getValue(Integer.class);
-                                    num = num + 1;
-                                    dbRef.child("degree_prev").setValue(num);
+                                if (snapshot.getValue(String.class) != null && flag[0] == false) {
+                                    String value = specDTO.title;
+                                    dbRef.child("degree_prev").setValue(value);
                                     flag[0] = true;
                                 }
                                 else if (flag[0] == false) {
-                                    dbRef.child("degree_prev").setValue(1);
+                                    String value = specDTO.title;
+                                    dbRef.child("degree_prev").setValue(value);
                                     flag[0] = true;
                                 }
                             }
@@ -221,12 +221,14 @@ public class SpecUpload extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
                                     int num = (int) snapshot.getValue(Integer.class);
-                                    num = num + 1;
+                                    int addTime = Integer.parseInt(specDTO.desc);
+                                    num = num + addTime;
                                     dbRef.child("volunteer_prev").setValue(num);
                                     flag[0] = true;
                                 }
                                 else if (flag[0] == false) {
-                                    dbRef.child("volunteer_prev").setValue(1);
+                                    int time = Integer.parseInt(specDTO.desc);
+                                    dbRef.child("volunteer_prev").setValue(time);
                                     flag[0] = true;
                                 }
                             }
@@ -243,14 +245,15 @@ public class SpecUpload extends AppCompatActivity {
                         dbRef.child("grade_prev").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.getValue(Integer.class) != null && flag[0] == false) {
-                                    int num = (int) snapshot.getValue(Integer.class);
-                                    num = num + 1;
-                                    dbRef.child("grade_prev").setValue(num);
+                                if (snapshot.getValue(Double.class) != null && flag[0] == false) {
+//                                    Double num = (Double) snapshot.getValue(Double.class);
+                                    Double gradeValue = Double.parseDouble(specDTO.desc);
+                                    dbRef.child("grade_prev").setValue(gradeValue);
                                     flag[0] = true;
                                 }
                                 else if (flag[0] == false) {
-                                    dbRef.child("grade_prev").setValue(1);
+                                    Double gradeValue = Double.parseDouble(specDTO.desc);
+                                    dbRef.child("grade_prev").setValue(gradeValue);
                                     flag[0] = true;
                                 }
                             }
